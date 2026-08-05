@@ -1,30 +1,102 @@
-```javascript
-// Set the date we're counting down to
-const countDownDate = new Date("Oct 21, 2026 00:00:00").getTime();
+```css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-// Update the count down every 1 second
-const x = setInterval(function() {
+body {
+    background: #050505;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
 
-    // Get today's date and time
-    const now = new Date().getTime();
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
 
-    // Find the distance between now and the count down date
-    const distance = countDownDate - now;
+.profile {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 4px solid gold;
+    object-fit: cover;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+    margin-bottom: 30px;
+}
 
-    // Time calculations for days, hours, minutes and seconds
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 50px;
+    color: gold;
+    margin-bottom: 10px;
+}
 
-    // Display the result in the element with id="countdown"
-    document.getElementById("countdown").innerHTML = 
-        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
 
-    // If the count down is over, write some text
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("countdown").innerHTML = "HAPPY 18TH BIRTHDAY!";
-    }
-}, 1000);
+.date {
+    font-size: 20px;
+    opacity: .8;
+    margin-bottom: 25px;
+}
+
+#countdown {
+    font-size: 38px;
+    font-weight: bold;
+    color: gold;
+    margin-bottom: 40px;
+}
+
+.message {
+    max-width: 800px;
+    line-height: 1.8;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    margin: 10px;
+    background: gold;
+    color: black;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.gold {
+    background: white;
+    color: black;
+}
+
+.gift-box {
+    margin-top: 50px;
+    padding: 30px;
+    border: 1px solid gold;
+    border-radius: 20px;
+    background: rgba(255, 215, 0, .08);
+    max-width: 800px;
+}
+
+footer {
+    margin-top: 60px;
+    opacity: .7;
+    font-size: 15px;
+}
 ```
