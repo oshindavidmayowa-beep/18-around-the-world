@@ -1,0 +1,124 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruz's Birthday Countdown</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            font-weight: 300;
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        #countdown {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 15px;
+            min-width: 100px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .time-box label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        #message {
+            margin-top: 30px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd700;
+            display: none; /* Hidden until birthday arrives */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Happy Birthday, CRUZ!</h1>
+    <h2>Counting down to October 21, 2026</h2>
+
+    <div id="countdown">
+        <div class="time-box"><span id="days">0</span><label>Days</label></div>
+        <div class="time-box"><span id="hours">0</span><label>Hours</label></div>
+        <div class="time-box"><span id="minutes">0</span><label>Minutes</label></div>
+        <div class="time-box"><span id="seconds">0</span><label>Seconds</label></div>
+    </div>
+
+    <div id="message">It's Birthday Time! 🎂</div>
+
+    <script>
+        // Set the date we're counting down to
+        // Note: JavaScript months are 0-indexed (0 = Jan, 9 = Oct)
+        const birthdayDate = new Date(2026, 9, 21, 0, 0, 0).getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = birthdayDate - now;
+
+            if (distance < 0) {
+                // Birthday has passed or is today
+                document.getElementById("countdown").style.display = "none";
+                document.getElementById("message").style.display = "block";
+                return;
+            }
+
+            // Time calculations
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Update the DOM
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }
+
+        // Update every second
+        setInterval(updateCountdown, 1000);
+        
+        // Initial call to avoid 1-second delay on load
+        updateCountdown();
+    </script>
+</body>
+</html>
+```
